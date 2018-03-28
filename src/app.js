@@ -208,6 +208,7 @@ app.get('/webhook/', (req, res) => {
             doSubscribeRequest();
         }, 3000);
     } else {
+        console.log(req);
         res.send('Error, wrong validation token');
     }
 });
