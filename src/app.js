@@ -15,10 +15,12 @@ const FB_VERIFY_TOKEN = process.env.FB_VERIFY_TOKEN;
 const FB_PAGE_ACCESS_TOKEN = process.env.FB_PAGE_ACCESS_TOKEN;
 
 const apiAiService = apiai(APIAI_ACCESS_TOKEN, {language: APIAI_LANG, requestSource: "fb"});
+console.log(apiAiService);
 const sessionIds = new Map();
 
 function processEvent(event) {
     var sender = event.sender.id.toString();
+    console.log(sender);
 
     if ((event.message && event.message.text) || (event.postback && event.postback.payload)) {
         var text = event.message ? event.message.text : event.postback.payload;
@@ -36,6 +38,7 @@ function processEvent(event) {
             });
 
         apiaiRequest.on('response', (response) => {
+            console.log(response);
             if (isDefined(response.result)) {
                 let responseText = response.result.fulfillment.speech;
                 let responseData = response.result.fulfillment.data;
