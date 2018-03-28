@@ -43,6 +43,7 @@ function processEvent(event) {
                 let responseText = response.result.fulfillment.speech;
                 let responseData = response.result.fulfillment.data;
                 let action = response.result.action;
+                console.log(responseText);
 
                 if (isDefined(responseData) && isDefined(responseData.facebook)) {
                     if (!Array.isArray(responseData.facebook)) {
@@ -65,6 +66,7 @@ function processEvent(event) {
                                 }
                             } catch (err) {
                                 sendFBMessage(sender, {text: err.message});
+                                console.log(err.message);
                             }
                         });
                     }
