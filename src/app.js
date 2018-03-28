@@ -180,6 +180,7 @@ function doSubscribeRequest() {
                 console.error('Error while subscription: ', error);
             } else {
                 console.log('Subscription result: ', response.body);
+                console.log(response);
             }
         });
 }
