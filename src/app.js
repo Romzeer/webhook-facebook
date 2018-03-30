@@ -80,7 +80,7 @@ function processEvent(event) {
                                 //sendGenericMessage(sender, value.imageUrl);
                                 sendFBMessage(sender, {
                                     attachment: {
-                                        type: "video",
+                                        type: "image",
                                         payload: {
                                             url: value.imageUrl,
                                             is_reusable:true
