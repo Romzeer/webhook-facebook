@@ -38,7 +38,7 @@ function processEvent(event) {
             });
 
         apiaiRequest.on('response', (response) => {
-            //(response);
+            console.log(response);
             if (isDefined(response.result)) {
                 let responseText = response.result.fulfillment.speech;
                 let responseData = response.result.fulfillment.data;
