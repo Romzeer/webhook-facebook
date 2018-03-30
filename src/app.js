@@ -76,7 +76,7 @@ function processEvent(event) {
                             //console.log(path.extname(value.imageUrl));
 
                             if (value.imageUrl.includes(".gif") && !value.imageUrl.includes(PNG, JPG, JPEG)) {
-                               sendFBMessage(sender, {picture: value.imageUrl});
+                               sendFBMessage(sender, {image: value.imageUrl});
                             } else {
 
                                 //message.reply(Bot.Message.picture(value.imageUrl));
