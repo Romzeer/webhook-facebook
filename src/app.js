@@ -202,6 +202,8 @@ const app = express();
 app.use(bodyParser.text({type: 'application/json'}));
 
 app.get('/webhook/', (req, res) => {
+    console.log(req.query['hub.verify_token']);
+    console.log(req.query['hub.challenge']);
     if (req.query['hub.verify_token'] == FB_VERIFY_TOKEN) {
         res.send(req.query['hub.challenge']);
 
@@ -209,7 +211,7 @@ app.get('/webhook/', (req, res) => {
             doSubscribeRequest();
         }, 3000);
     } else {
-        console.log(req);
+        //console.log(req);
         res.send('Error, wrong validation token');
     }
 });
