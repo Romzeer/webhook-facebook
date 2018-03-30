@@ -13,6 +13,10 @@ const APIAI_ACCESS_TOKEN = process.env.APIAI_ACCESS_TOKEN;
 const APIAI_LANG = process.env.APIAI_LANG || 'en';
 const FB_VERIFY_TOKEN = process.env.FB_VERIFY_TOKEN;
 const FB_PAGE_ACCESS_TOKEN = process.env.FB_PAGE_ACCESS_TOKEN;
+const GIF = ".gif";
+const JPEG = ".jpeg";
+const JPG = ".jpg";
+const PNG = ".png";
 
 const apiAiService = apiai(APIAI_ACCESS_TOKEN, {language: APIAI_LANG, requestSource: "fb"});
 console.log(apiAiService);
