@@ -19,7 +19,7 @@
     },
     "APIAI_LANG": {
       "description": "Agent language",
-      "value": "en",
+      "value": "fr",
       "required": false
     }
   },
