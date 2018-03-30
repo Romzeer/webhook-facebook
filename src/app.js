@@ -16,11 +16,12 @@ const FB_PAGE_ACCESS_TOKEN = process.env.FB_PAGE_ACCESS_TOKEN;
 
 const apiAiService = apiai(APIAI_ACCESS_TOKEN, {language: APIAI_LANG, requestSource: "fb"});
 console.log(apiAiService);
+
 const sessionIds = new Map();
 
 function processEvent(event) {
     var sender = event.sender.id.toString();
-    
+
     console.log(sender);
 
     if ((event.message && event.message.text) || (event.postback && event.postback.payload)) {
