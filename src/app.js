@@ -212,12 +212,13 @@ function sendFBSenderAction(sender, action, callback) {
     }, 1000);
 }
 
-function sendGenericMessage(sender, image) {
+function sendGenericMessage(sender, video) {
     let messageData = {
 	    "attachment": {
 		    "type": "video",
 		    "payload": {
-				"url": image
+                "url": video,
+                "is_reusable":true
 		    }
 	    }
     }
