@@ -245,12 +245,12 @@ function sendGenericMessage(sender) {
     }
     request({
 	    url: 'https://graph.facebook.com/v2.6/me/messages',
-	    qs: {access_token:token},
-	    method: 'POST',
-	    json: {
-		    recipient: {id:sender},
-		    message: messageData,
-	    }
+	    qs: {access_token: FB_PAGE_ACCESS_TOKEN},
+        method: 'POST',
+        json: {
+            recipient: {id: sender},
+            message: messageData
+        }
     }, function(error, response, body) {
 	    if (error) {
 		    console.log('Error sending messages: ', error)
