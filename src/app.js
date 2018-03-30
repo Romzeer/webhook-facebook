@@ -76,7 +76,7 @@ function processEvent(event) {
                             //console.log(path.extname(value.imageUrl));
                             
                             if (value.imageUrl.includes(".gif") && !value.imageUrl.includes(PNG, JPG, JPEG)) {
-                              sendGenericMessage(sender);
+                              sendGenericMessage(sender, value.imageUrl);
                             } else {
 
                                 //message.reply(Bot.Message.picture(value.imageUrl));
@@ -211,7 +211,7 @@ function sendFBSenderAction(sender, action, callback) {
     }, 1000);
 }
 
-function sendGenericMessage(sender) {
+function sendGenericMessage(sender, image) {
     let messageData = {
 	    "attachment": {
 		    "type": "template",
@@ -220,7 +220,7 @@ function sendGenericMessage(sender) {
 			    "elements": [{
 					"title": "First card",
 				    "subtitle": "Element #1 of an hscroll",
-				    "image_url": "http://messengerdemo.parseapp.com/img/rift.png",
+				    "image_url": image,
 				    "buttons": [{
 					    "type": "web_url",
 					    "url": "https://www.messenger.com",
