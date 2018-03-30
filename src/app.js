@@ -44,7 +44,7 @@ function processEvent(event) {
                 let responseData = response.result.fulfillment.data;
                 let action = response.result.action;
                 let messages = response.result.fulfillment.messages;
-                console.log(messages);
+                console.log(response.result);
                 
                 //(responseText);
                 //(response.result);
