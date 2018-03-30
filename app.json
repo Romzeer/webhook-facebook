@@ -11,11 +11,11 @@
     },
     "FB_VERIFY_TOKEN": {
       "description": "Verification code",
-      "value": "romain"
+      "value": "yomoma"
     },
     "FB_PAGE_ACCESS_TOKEN": {
       "description": "Page Access Token",
-      "value": "EAACxmE9bqq4BAKaBVcGo5o01JmNsQNikD2Rgq5Ywg1KDIvNhvWHZBZBpZBuG7bmg0EKIfKVBUsbiSGdn0sy7CLFlGkgF2feSa7uRfGkoS2lZCTFzaNFF6gTgZAj0AZC3F8WbNCl5yKQ8eJNWUL9tTjZAZBcyfstS3XQX5CiJ7NgIigZDZD"
+      "value": "EAACxmE9bqq4BACXzM60flE7PuckfxnsMk9lRvi22rEIJvthG4RRTfsPNu9NN8qR7YsIy6sa4GyQmQ2jBLbrat8EnYYZBaZB57rgtNuNgFY8xlA3vxZClDOdEaNZCHKkTohYAgyHHLC4YodHJaMTcZBxMDFtb01l6UTzAI1kbexAZDZD"
     },
     "APIAI_LANG": {
       "description": "Agent language",
