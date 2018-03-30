@@ -216,20 +216,10 @@ function sendGenericMessage(sender, image) {
 	    "attachment": {
 		    "type": "template",
 		    "payload": {
-				"template_type": "generic",
+				"template_type": "media",
 			    "elements": [{
-					"title": "First card",
-				    "subtitle": "Element #1 of an hscroll",
-				    "image_url": image,
-				    "buttons": [{
-					    "type": "web_url",
-					    "url": "https://www.messenger.com",
-					    "title": "web url"
-				    }, {
-					    "type": "postback",
-					    "title": "Postback",
-					    "payload": "Payload for first element in a generic bubble",
-				    }],
+					"media_type": "video",
+				    "url": image,
 			    }, {
 				    "title": "Second card",
 				    "subtitle": "Element #2 of an hscroll",
