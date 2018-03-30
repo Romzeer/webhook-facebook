@@ -15,12 +15,12 @@ const FB_VERIFY_TOKEN = process.env.FB_VERIFY_TOKEN;
 const FB_PAGE_ACCESS_TOKEN = process.env.FB_PAGE_ACCESS_TOKEN;
 
 const apiAiService = apiai(APIAI_ACCESS_TOKEN, {language: APIAI_LANG, requestSource: "fb"});
-
+console.log(apiAiService);
 const sessionIds = new Map();
 
 function processEvent(event) {
     var sender = event.sender.id.toString();
-    //(sender);
+    console.log(sender);
 
     if ((event.message && event.message.text) || (event.postback && event.postback.payload)) {
         var text = event.message ? event.message.text : event.postback.payload;
@@ -30,7 +30,7 @@ function processEvent(event) {
             sessionIds.set(sender, uuid.v1());
         }
 
-        //("Text", text);
+        console.log("Text", text);
 
         let apiaiRequest = apiAiService.textRequest(text,
             {
@@ -43,16 +43,13 @@ function processEvent(event) {
                 let responseText = response.result.fulfillment.speech;
                 let responseData = response.result.fulfillment.data;
                 let action = response.result.action;
-                let messages = response.result.fulfillment.messages;
+                console.log(responseText);
                 console.log(response.result);
-                
-                //(responseText);
-                //(response.result);
 
                 if (isDefined(responseData) && isDefined(responseData.facebook)) {
                     if (!Array.isArray(responseData.facebook)) {
                         try {
-                            //('Response as formatted message');
+                            console.log('Response as formatted message');
                             sendFBMessage(sender, responseData.facebook);
                         } catch (err) {
                             sendFBMessage(sender, {text: err.message});
@@ -61,21 +58,21 @@ function processEvent(event) {
                         responseData.facebook.forEach((facebookMessage) => {
                             try {
                                 if (facebookMessage.sender_action) {
-                                    //('Response as sender action');
+                                    console.log('Response as sender action');
                                     sendFBSenderAction(sender, facebookMessage.sender_action);
                                 }
                                 else {
-                                    //('Response as formatted message');
+                                    console.log('Response as formatted message');
                                     sendFBMessage(sender, facebookMessage);
                                 }
                             } catch (err) {
                                 sendFBMessage(sender, {text: err.message});
-                                //(err.message);
+                                console.log(err.message);
                             }
                         });
                     }
                 } else if (isDefined(responseText)) {
-                    //('Response as text message');
+                    console.log('Response as text message');
                     // facebook API limit for text length is 320,
                     // so we must split message if needed
                     var splittedText = splitResponse(responseText);
@@ -140,9 +137,9 @@ function sendFBMessage(sender, messageData, callback) {
         }
     }, (error, response, body) => {
         if (error) {
-            //('Error sending message: ', error);
+            console.log('Error sending message: ', error);
         } else if (response.body.error) {
-            //('Error: ', response.body.error);
+            console.log('Error: ', response.body.error);
         }
 
         if (callback) {
@@ -163,9 +160,9 @@ function sendFBSenderAction(sender, action, callback) {
             }
         }, (error, response, body) => {
             if (error) {
-                //('Error sending action: ', error);
+                console.log('Error sending action: ', error);
             } else if (response.body.error) {
-                //('Error: ', response.body.error);
+                console.log('Error: ', response.body.error);
             }
             if (callback) {
                 callback();
@@ -183,7 +180,7 @@ function doSubscribeRequest() {
             if (error) {
                 console.error('Error while subscription: ', error);
             } else {
-                //('Subscription result: ', response.body);
+                console.log('Subscription result: ', response.body);
             }
         });
 }
@@ -212,7 +209,7 @@ app.get('/webhook/', (req, res) => {
             doSubscribeRequest();
         }, 3000);
     } else {
-        //(req);
+        console.log(req);
         res.send('Error, wrong validation token');
     }
 });
@@ -220,7 +217,7 @@ app.get('/webhook/', (req, res) => {
 app.post('/webhook/', (req, res) => {
     try {
         var data = JSONbig.parse(req.body);
-        //(data);
+        console.log(data);
 
         if (data.entry) {
             let entries = data.entry;
@@ -250,7 +247,7 @@ app.post('/webhook/', (req, res) => {
 });
 
 app.listen(REST_PORT, () => {
-    //('Rest service ready on port ' + REST_PORT);
+    console.log('Rest service ready on port ' + REST_PORT);
 });
 
 doSubscribeRequest();
