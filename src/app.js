@@ -52,6 +52,7 @@ function processEvent(event) {
                         console.log(value);
                         if (value.type == "0") {
                             //message.reply(value.speech);
+                            sendFBMessage(sender, value.speech);
                         }
                         else if (value.type == "1") {
                             console.log(value.buttons[ 0 ].postback);
@@ -70,11 +71,7 @@ function processEvent(event) {
                             //console.log(path.extname(value.imageUrl));
 
                             if (value.imageUrl.includes(".gif") && !value.imageUrl.includes(PNG, JPG, JPEG)) {
-                                // message.reply(
-                                //     Bot.Message.video(value.imageUrl)
-                                //         .setLoop(true)
-                                //         .setAutoplay(true)
-                                // );
+                               sendFBMessage(sender, value.imageUrl);
                             } else {
 
                                 //message.reply(Bot.Message.picture(value.imageUrl));
