@@ -165,6 +165,7 @@ function chunkString(s, len) {
 }
 
 function sendFBMessage(sender, messageData, callback) {
+    console.log(messageData);
     request({
         url: 'https://graph.facebook.com/v2.6/me/messages',
         qs: {access_token: FB_PAGE_ACCESS_TOKEN},
@@ -174,6 +175,7 @@ function sendFBMessage(sender, messageData, callback) {
             message: messageData
         }
     }, (error, response, body) => {
+        console.log(body);
         if (error) {
             console.log('Error sending message: ', error);
         } else if (response.body.error) {
