@@ -57,7 +57,7 @@ function processEvent(event) {
                         if (value.type == "0") {
                             console.log(value.speech);
                             //message.reply(value.speech);
-                            sendFBMessage(sender, {text: value.speech});
+                            //sendFBMessage(sender, {text: value.speech});
                         }
                         else if (value.type == "1") {
                             console.log(value.buttons[ 0 ].postback);
@@ -77,7 +77,17 @@ function processEvent(event) {
                             
                             if (value.imageUrl.includes(".gif") && !value.imageUrl.includes(PNG, JPG, JPEG)) {
                                 console.log("oui");
-                                sendGenericMessage(sender, value.imageUrl);
+                                //sendGenericMessage(sender, value.imageUrl);
+                                sendFBMessage(sender, {
+                                    text: "test",
+                                    attachment: {
+                                        type: "video",
+                                        payload: {
+                                            url: value.imageUrl,
+                                            is_reusable:true
+                                        }
+                                    }
+                                });
                             } else {
 
                                 //message.reply(Bot.Message.picture(value.imageUrl));
