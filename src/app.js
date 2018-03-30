@@ -53,8 +53,9 @@ function processEvent(event) {
                 if (isDefined(messages) && messages.length > 1) {
                     const fbDatas = messages.filter(element => element.platform == "facebook");
                     fbDatas.forEach(value => {
-                        console.log(value);
+                       
                         if (value.type == "0") {
+                            console.log(value.speech);
                             //message.reply(value.speech);
                             sendFBMessage(sender, value.speech);
                         }
