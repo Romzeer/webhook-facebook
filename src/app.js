@@ -22,8 +22,6 @@ const sessionIds = new Map();
 function processEvent(event) {
     var sender = event.sender.id.toString();
 
-    console.log(sender);
-
     if ((event.message && event.message.text) || (event.postback && event.postback.payload)) {
         var text = event.message ? event.message.text : event.postback.payload;
         // Handle a text message from this sender
@@ -40,18 +38,19 @@ function processEvent(event) {
             });
 
         apiaiRequest.on('response', (response) => {
-            console.log(response);
+      
             if (isDefined(response.result)) {
                 let responseText = response.result.fulfillment.speech;
                 let responseData = response.result.fulfillment.data;
                 let action = response.result.action;
-                console.log(responseText);
-                console.log(response.result);
+                let messages = response.result.fulfillment.messages;
+                console.log(messages);
+              
 
                 if (isDefined(responseData) && isDefined(responseData.facebook)) {
                     if (!Array.isArray(responseData.facebook)) {
                         try {
-                            console.log('Response as formatted message');
+                            console.log(' Ici Response as formatted message');
                             sendFBMessage(sender, responseData.facebook);
                         } catch (err) {
                             sendFBMessage(sender, {text: err.message});
