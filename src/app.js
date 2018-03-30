@@ -46,9 +46,43 @@ function processEvent(event) {
                 let messages = response.result.fulfillment.messages;
                 console.log(responseText);
                 console.log(messages);
-              
+                if (isDefined(messages) && messages.length > 1) {
+                    const fbDatas = messages.filter(element => element.platform == "fb");
+                    fbDatas.forEach(value => {
+                        console.log(value);
+                        if (value.type == "0") {
+                            //message.reply(value.speech);
+                        }
+                        else if (value.type == "1") {
+                            console.log(value.buttons[ 0 ].postback);
+                            // message.reply(
+                            //     Bot.Message.link(value.buttons[ 0 ].postback)
+                            //         .setTitle(value.title)
+                            //         .setText(value.buttons[ 0 ].text)
+                            // );
+                        }
 
-                if (isDefined(responseData) && isDefined(responseData.facebook)) {
+                        else if (value.type == "2") {
+                            // message.reply(Bot.Message.text(value.title)
+                            //     .addResponseKeyboard(value.replies, false));
+                        }
+                        else if (value.type == "3") {
+                            //console.log(path.extname(value.imageUrl));
+
+                            if (value.imageUrl.includes(".gif") && !value.imageUrl.includes(PNG, JPG, JPEG)) {
+                                // message.reply(
+                                //     Bot.Message.video(value.imageUrl)
+                                //         .setLoop(true)
+                                //         .setAutoplay(true)
+                                // );
+                            } else {
+
+                                //message.reply(Bot.Message.picture(value.imageUrl));
+                            }
+                        }
+                    })
+                }
+               else if (isDefined(responseData) && isDefined(responseData.facebook)) {
                     if (!Array.isArray(responseData.facebook)) {
                         try {
                             console.log(' Ici Response as formatted message');
