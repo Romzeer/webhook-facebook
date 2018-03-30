@@ -214,22 +214,9 @@ function sendFBSenderAction(sender, action, callback) {
 function sendGenericMessage(sender, image) {
     let messageData = {
 	    "attachment": {
-		    "type": "template",
+		    "type": "video",
 		    "payload": {
-				"template_type": "media",
-			    "elements": [{
-					"media_type": "video",
-				    "url": image,
-			    }, {
-				    "title": "Second card",
-				    "subtitle": "Element #2 of an hscroll",
-				    "image_url": "http://messengerdemo.parseapp.com/img/gearvr.png",
-				    "buttons": [{
-					    "type": "postback",
-					    "title": "Postback",
-					    "payload": "Payload for second element in a generic bubble",
-				    }],
-			    }]
+				"url": image
 		    }
 	    }
     }
