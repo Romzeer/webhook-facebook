@@ -79,7 +79,6 @@ function processEvent(event) {
                                 console.log("oui");
                                 //sendGenericMessage(sender, value.imageUrl);
                                 sendFBMessage(sender, {
-                                    text: "test",
                                     attachment: {
                                         type: "video",
                                         payload: {
