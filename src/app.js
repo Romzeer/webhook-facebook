@@ -74,9 +74,22 @@ function processEvent(event) {
                         }
                         else if (value.type == "3") {
                             //console.log(path.extname(value.imageUrl));
-
+                            
                             if (value.imageUrl.includes(".gif") && !value.imageUrl.includes(PNG, JPG, JPEG)) {
-                               //sendFBMessage(sender, {attachements: value.imageUrl});
+                                var attachment = {
+                                    'type':'template',
+                                    'payload':{
+                                        'template_type':'generic',
+                                        'elements':[
+                                            {
+                                                'title':'Chocolate Cookie',
+                                                'image_url': value.imageUrl,
+                                                'subtitle':'A delicious chocolate cookie',
+                                            },
+                                        ]
+                                    }
+                                };
+                               sendFBMessage(sender, {text: "test", attachement: attachment});
                             } else {
 
                                 //message.reply(Bot.Message.picture(value.imageUrl));
