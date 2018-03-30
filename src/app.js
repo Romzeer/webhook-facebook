@@ -44,6 +44,7 @@ function processEvent(event) {
                 let responseData = response.result.fulfillment.data;
                 let action = response.result.action;
                 let messages = response.result.fulfillment.messages;
+                console.log(responseText);
                 console.log(messages);
               
 
@@ -203,9 +204,6 @@ const app = express();
 app.use(bodyParser.text({type: 'application/json'}));
 
 app.get('/webhook/', (req, res) => {
-    console.log(req.query['hub.verify_token']);
-    console.log(FB_VERIFY_TOKEN);
-    console.log(req.query['hub.challenge']);
     if (req.query['hub.verify_token'] == FB_VERIFY_TOKEN) {
         res.send(req.query['hub.challenge']);
 
@@ -221,7 +219,6 @@ app.get('/webhook/', (req, res) => {
 app.post('/webhook/', (req, res) => {
     try {
         var data = JSONbig.parse(req.body);
-        console.log(data);
 
         if (data.entry) {
             let entries = data.entry;
