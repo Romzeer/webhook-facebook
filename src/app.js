@@ -62,6 +62,10 @@ function processEvent(event) {
                             messagesDatas.push(newMessage);
                         }
                         else if (value.type == "1") {
+                            let buttons = value.buttons.map(button => {
+                                return {"text" : button.text,
+                                        "payload": button.payload}
+                            });
                             let newMessage = {
                                 "attachment": {
                                     "type": "template",
@@ -71,10 +75,7 @@ function processEvent(event) {
                                             "title": value.title,
                                             "subtitle": "Element #1 of an hscroll",
                                             "image_url": value.imageUrl,
-                                            "buttons": value.buttons.map(button => {
-                                                return {"text" : button.text,
-                                                        "payload": button.payload}
-                                            }),
+                                            "buttons": buttons,
                                         }]
                                     }
                                 }
