@@ -58,6 +58,8 @@ function processEvent(event) {
                     axios.get(url)
                     .then(function (response) {
                       console.log(response);
+                      console.log(response.data[1][0]);
+                      console.log(response.data[2][0]);
                     })
                     .catch(function (error) {
                       console.log(error);
