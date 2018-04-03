@@ -55,7 +55,7 @@ function processEvent(event) {
                     let param = response.result.parameters.any;
                     let url = `https://en.wikipedia.org/w/api.php?action=opensearch&search=${param}&limit=1&namespace=0&format=json`
 
-                    axios.get('/user?ID=12345')
+                    axios.get(url)
                     .then(function (response) {
                       console.log(response);
                     })
