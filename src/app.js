@@ -127,7 +127,7 @@ function processEvent(event) {
                         //     });
                         }
                     });
-                    sendFBMessage(sender, messagesDatas, callback, 0);
+                    sendFBMessage(sender, messagesDatas, 0);
                 } else {
                     messages.forEach(value => {
                         if (value.type == "0") {
