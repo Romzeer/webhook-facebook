@@ -217,7 +217,7 @@ function sendFBMessage(sender, messageData, callback) {
             callback();
         }
     });
-}, 1000);
+}, 3000);
 }
 
 function sendFBSenderAction(sender, action, callback) {
@@ -240,7 +240,7 @@ function sendFBSenderAction(sender, action, callback) {
                 callback();
             }
         });
-    }, 5500);
+    }, 1000);
 }
 
 function sendGenericMessage(sender, video) {
