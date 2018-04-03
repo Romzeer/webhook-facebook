@@ -101,7 +101,8 @@ function processEvent(event) {
                 } else {
                     messages.forEach(value => {
                         if (value.type == "0") {
-                        sendFBMessage(sender, {text:value.speech});
+                        console.log("oui");
+                        sendFBMessage(sender, {text: value.speech});
                         }
                     });
                 }
