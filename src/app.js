@@ -159,7 +159,8 @@ function processEvent(event) {
                     // var splittedText = splitResponse(responseText);
 
                     // async.eachSeries(splittedText, textPart => {
-                        sendFBMessage(sender, {text: responseText}, 0);
+                        let newMessage = {text: responseText};
+                        sendFBMessage(sender, newMessage, 0);
                    // });
                 }
 
