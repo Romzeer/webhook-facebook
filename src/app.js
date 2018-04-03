@@ -58,8 +58,8 @@ function processEvent(event) {
 
                             console.log("TEEXT");
                             //
-                            let test =  {text: value.speech};
-                            messagesDatas.push(test);
+                            let newMessage =  {text: value.speech};
+                            messagesDatas.push(newMessage);
                         }
                         else if (value.type == "1") {
                             console.log(value.buttons[ 0 ].postback);
@@ -70,38 +70,17 @@ function processEvent(event) {
                             // );
                         }
                         else if (value.type == "3") {
-                            //console.log(path.extname(value.imageUrl));
-
-                            
-                            if (value.imageUrl.includes(".gif") && !value.imageUrl.includes(PNG, JPG, JPEG)) {
-                                console.log("oui");
                                 //sendGenericMessage(sender, value.imageUrl);
-                                let test1 =  {  
+                                let newMessage =  {  
                                     attachment: {
                                         type: "image",
                                         payload: {
                                             url: value.imageUrl,
                                             is_reusable:true
                                         }
-                                    },
-                                    is_echo: true
-                                
-                                }
-                                messagesDatas.push(test1);
-                                // sendFBMessage(sender, {
-                                //     attachment: {
-                                //         type: "image",
-                                //         payload: {
-                                //             url: value.imageUrl,
-                                //             is_reusable:true
-                                //         }
-                                //     },
-                                //     is_echo: true
-                                // });
-                            } else {
-
-                                //message.reply(Bot.Message.picture(value.imageUrl));
-                            }
+                                    }
+                                };
+                                messagesDatas.push(newMessage);
                         }
                         else if (value.type == "2") {
                             // message.reply(Bot.Message.text(value.title)
@@ -114,16 +93,11 @@ function processEvent(event) {
                                   "payload": reply
                                 };
                               }); 
-                              let test2 = {
+                              let newMessage = {
                                 text: value.title,
                                 quick_replies: quickReplies,
                             }
-                            messagesDatas.push(test2);
-                        //    sendFBMessage(sender, {
-                        //         text: value.title,
-                        //         quick_replies: quickReplies,
-                        //         is_echo: true
-                        //     });
+                            messagesDatas.push(newMessage);
                         }
                     });
                     console.log(messagesDatas);
@@ -132,7 +106,7 @@ function processEvent(event) {
                     messages.forEach(value => {
                         if (value.type == "0") {
                         console.log("pas de datas facebook");
-                        sendFBMessage(sender, {text: value.speech});
+                        sendFBMessage(sender, {text: value.speech}, 0);
                         }
                     });
                 }
