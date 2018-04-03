@@ -78,10 +78,10 @@ function processEvent(event) {
                                   "payload": reply
                                 };
                               }); 
-                            sendFBMessage(sender, {
+                            async.queue(sendFBMessage(sender, {
                                 text: value.title,
                                 quick_replies: quickReplies
-                            });
+                            }), callback);
                         }
                         else if (value.type == "3") {
                             //console.log(path.extname(value.imageUrl));
