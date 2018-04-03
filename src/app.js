@@ -48,8 +48,7 @@ function processEvent(event) {
                 let responseData = response.result.fulfillment.data;
                 let action = response.result.action;
                 let messages = response.result.fulfillment.messages;
-                console.log(responseText);
-                console.log(messages);
+                let messagesDatas = [];
                 if (isDefined(messages) && messages.length > 1) {
                     const fbDatas = messages.filter(element => element.platform == "facebook");
                     if (fbDatas.length > 0) {
@@ -58,7 +57,9 @@ function processEvent(event) {
                         if (value.type == "0") {
 
                             console.log("TEEXT");
-                            sendFBMessage(sender, {text: value.speech});
+                            //
+                            let test =  {text: value.speech};
+                            messagesDatas.push(test);
                         }
                         else if (value.type == "1") {
                             console.log(value.buttons[ 0 ].postback);
@@ -75,7 +76,7 @@ function processEvent(event) {
                             if (value.imageUrl.includes(".gif") && !value.imageUrl.includes(PNG, JPG, JPEG)) {
                                 console.log("oui");
                                 //sendGenericMessage(sender, value.imageUrl);
-                                sendFBMessage(sender, {
+                                let test1 =  {  
                                     attachment: {
                                         type: "image",
                                         payload: {
@@ -84,7 +85,19 @@ function processEvent(event) {
                                         }
                                     },
                                     is_echo: true
-                                });
+                                
+                                }
+                                messagesDatas.push(test1);
+                                // sendFBMessage(sender, {
+                                //     attachment: {
+                                //         type: "image",
+                                //         payload: {
+                                //             url: value.imageUrl,
+                                //             is_reusable:true
+                                //         }
+                                //     },
+                                //     is_echo: true
+                                // });
                             } else {
 
                                 //message.reply(Bot.Message.picture(value.imageUrl));
@@ -101,13 +114,20 @@ function processEvent(event) {
                                   "payload": reply
                                 };
                               }); 
-                           sendFBMessage(sender, {
+                              let test2 = {
                                 text: value.title,
                                 quick_replies: quickReplies,
                                 is_echo: true
-                            });
+                            }
+                            messagesDatas.push(test2);
+                        //    sendFBMessage(sender, {
+                        //         text: value.title,
+                        //         quick_replies: quickReplies,
+                        //         is_echo: true
+                        //     });
                         }
                     });
+                    sendFBMessage(sender, messagesDatas, callback, 0);
                 } else {
                     messages.forEach(value => {
                         if (value.type == "0") {
@@ -197,19 +217,21 @@ function chunkString(s, len) {
     return output;
 }
 
-function sendFBMessage(sender, messageData, callback) {
-    setTimeout(() => {
+function sendFBMessage(sender, messageData, callback, i) {
+ 
     request({
         url: 'https://graph.facebook.com/v2.6/me/messages',
         qs: {access_token: FB_PAGE_ACCESS_TOKEN},
         method: 'POST',
         json: {
             recipient: {id: sender},
-            message: messageData
+            message: messageData[i]
         }
     }, (error, response, body) => {
         console.log(response);
-        
+        if(i < messages.length) {
+            sendFBMessage(sender, messageData , callback, i+1);
+        }
         if (error) {
             console.log('Error sending message: ', error);
         } else if (response.body.error) {
@@ -220,7 +242,6 @@ function sendFBMessage(sender, messageData, callback) {
             callback();
         }
     });
-}, 1000);
 }
 
 function sendFBSenderAction(sender, action, callback) {
