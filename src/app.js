@@ -67,22 +67,6 @@ function processEvent(event) {
                             //         .setText(value.buttons[ 0 ].text)
                             // );
                         }
-
-                        else if (value.type == "2") {
-                            // message.reply(Bot.Message.text(value.title)
-                            //     .addResponseKeyboard(value.replies, false));
-                            let quickReplies = value.replies.map(reply => {
-                                return {
-                                  "content_type": "text",
-                                  "title": reply,
-                                  "payload": reply
-                                };
-                              }); 
-                            async.queue(sendFBMessage(sender, {
-                                text: value.title,
-                                quick_replies: quickReplies
-                            }), callback);
-                        }
                         else if (value.type == "3") {
                             //console.log(path.extname(value.imageUrl));
 
@@ -103,6 +87,21 @@ function processEvent(event) {
 
                                 //message.reply(Bot.Message.picture(value.imageUrl));
                             }
+                        }
+                        else if (value.type == "2") {
+                            // message.reply(Bot.Message.text(value.title)
+                            //     .addResponseKeyboard(value.replies, false));
+                            let quickReplies = value.replies.map(reply => {
+                                return {
+                                  "content_type": "text",
+                                  "title": reply,
+                                  "payload": reply
+                                };
+                              }); 
+                            async.queue(sendFBMessage(sender, {
+                                text: value.title,
+                                quick_replies: quickReplies
+                            }), callback);
                         }
                     })
                 } else {
