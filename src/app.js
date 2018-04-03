@@ -118,10 +118,12 @@ function processEvent(event) {
                 } else {
                     messages.forEach(value => {
                         if (value.type == "0") {
-                        console.log("pas de datas facebook");
-                        sendFBMessage(sender, {text: value.speech}, 0);
+                            let newMessage = value.speech;
+                            messagesDatas.push(newMessage);
                         }
                     });
+
+                    sendFBMessage(sender, messagesDatas, 0);
                 }
                 }
                else if (isDefined(responseData) && isDefined(responseData.facebook)) {
