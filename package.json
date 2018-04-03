@@ -13,6 +13,7 @@
     "api-ai": "0.0.7",
     "apiai": "2.0.5",
     "async": "^2.0.0",
+    "axios": "^0.18.0",
     "body-parser": "^1.15.2",
     "express": "^4.13.3",
     "html-entities": "^1.2.0",

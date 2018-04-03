@@ -7,6 +7,7 @@ const uuid = require('node-uuid');
 const request = require('request');
 const JSONbig = require('json-bigint');
 const async = require('async');
+const axios = require('axios');
 
 const REST_PORT = (process.env.PORT || 5000);
 const APIAI_ACCESS_TOKEN = process.env.APIAI_ACCESS_TOKEN;
@@ -48,9 +49,20 @@ function processEvent(event) {
                 let responseData = response.result.fulfillment.data;
                 let action = response.result.action;
                 let messages = response.result.fulfillment.messages;
-                console.log(response.parameters);
+                console.log(response.result.parameters);
                 let messagesDatas = [];
                 if (action == "input.whatis") {
+                    let param = response.result.parameters.any;
+                    let url = `https://en.wikipedia.org/w/api.php?action=opensearch&search=${param}&limit=1&namespace=0&format=json`
+
+                    axios.get('/user?ID=12345')
+                    .then(function (response) {
+                      console.log(response);
+                    })
+                    .catch(function (error) {
+                      console.log(error);
+                    });
+                  
 
                 }
                 if (isDefined(messages) && messages.length > 1) {
