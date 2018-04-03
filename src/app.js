@@ -206,7 +206,8 @@ function sendFBMessage(sender, messageData, callback) {
             message: messageData
         }
     }, (error, response, body) => {
-        console.log("body:" + body);
+        console.log("rep" +response);
+        
         if (error) {
             console.log('Error sending message: ', error);
         } else if (response.body.error) {
