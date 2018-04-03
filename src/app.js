@@ -235,7 +235,7 @@ function sendFBMessage(sender, messageData, i) {
             console.log('Error: ', response.body.error);
         } else {
             console.log("dans la réponse");
-            if(i < messages.length) {
+            if(i < messageData.length) {
                 sendFBMessage(sender, messageData , callback, i+1);
             }
         }
