@@ -206,7 +206,7 @@ function sendFBMessage(sender, messageData, callback) {
             message: messageData
         }
     }, (error, response, body) => {
-        console.log("rep" +response);
+        console.log(response);
         
         if (error) {
             console.log('Error sending message: ', error);
@@ -234,7 +234,9 @@ function sendFBSenderAction(sender, action, callback) {
         }, (error, response, body) => {
             console.log(response);
             if (error) {
-                console.log('Error sending action: ', error);
+                console.log('Error se9 avril 2017, 09:27
+                ￼
+                Seanyboy Leending action: ', error);
             } else if (response.body.error) {
                 console.log('Error: ', response.body.error);
             }
@@ -318,7 +320,7 @@ app.get('/webhook/', (req, res) => {
 app.post('/webhook/', (req, res) => {
     try {
         var data = JSONbig.parse(req.body);
-
+        console.log(data);
         if (data.entry) {
             let entries = data.entry;
             entries.forEach((entry) => {
