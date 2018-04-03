@@ -236,9 +236,7 @@ function sendFBSenderAction(sender, action, callback) {
         }, (error, response, body) => {
             console.log(response);
             if (error) {
-                console.log('Error se9 avril 2017, 09:27
-                ￼
-                Seanyboy Leending action: ', error);
+                console.log('Error:', error);
             } else if (response.body.error) {
                 console.log('Error: ', response.body.error);
             }
