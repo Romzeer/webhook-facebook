@@ -53,7 +53,7 @@ function processEvent(event) {
                 if (isDefined(messages) && messages.length > 1) {
                     const fbDatas = messages.filter(element => element.platform == "facebook");
                     if (fbDatas.length > 0) {
-                    fbDatas.forEach(value => {
+                    fbDatas.map(value => {
                        
                         if (value.type == "0") {
                             console.log(value.speech);
