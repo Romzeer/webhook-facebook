@@ -127,6 +127,7 @@ function processEvent(event) {
                         //     });
                         }
                     });
+                    console.log(messagesDatas);
                     sendFBMessage(sender, messagesDatas, 0);
                 } else {
                     messages.forEach(value => {
