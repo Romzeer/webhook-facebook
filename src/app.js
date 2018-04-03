@@ -72,7 +72,8 @@ function processEvent(event) {
                                             "subtitle": "Element #1 of an hscroll",
                                             "image_url": value.imageUrl,
                                             "buttons": value.buttons.map(button => {
-                                                return {button}
+                                                return {"text" : button.text,
+                                                        "payload": button.payload}
                                             }),
                                         }]
                                     }
