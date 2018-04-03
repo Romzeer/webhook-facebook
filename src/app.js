@@ -52,11 +52,11 @@ function processEvent(event) {
                 console.log(messages);
                 if (isDefined(messages) && messages.length > 1) {
                     const fbDatas = messages.filter(element => element.platform == "facebook");
+                    if (fbDatas) {
                     fbDatas.forEach(value => {
                        
                         if (value.type == "0") {
                             console.log(value.speech);
-                            //message.reply(value.speech);
                             sendFBMessage(sender, {text: value.speech});
                         }
                         else if (value.type == "1") {
@@ -98,6 +98,13 @@ function processEvent(event) {
                             }
                         }
                     })
+                } else {
+                    messages.forEach(value => {
+                        if (value.type == "0") {
+                        sendFBMessage(sender, {text:value.speech});
+                        }
+                    });
+                }
                 }
                else if (isDefined(responseData) && isDefined(responseData.facebook)) {
                     if (!Array.isArray(responseData.facebook)) {
