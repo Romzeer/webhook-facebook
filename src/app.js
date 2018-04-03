@@ -162,7 +162,7 @@ function processEvent(event) {
                         let newMessage = {text: responseText};
                         messagesDatas.push(newMessage);
                         console.log(messagesDatas);
-                        sendFBMessage(sender, messagesDatas, 1);
+                        sendFBMessage(sender, messagesDatas, 0);
                    // });
                 }
 
