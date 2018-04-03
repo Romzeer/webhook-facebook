@@ -59,7 +59,8 @@ function processEvent(event) {
                     .then(function (response) {
                       console.log(response);
                       console.log(response.data[1][0]);
-                      console.log(response.data[2][0]);
+                      let responseMessage = response.data[2][0];
+                      sendFBMessage(sender, {text: responseMessage}, 0);
                     })
                     .catch(function (error) {
                       console.log(error);
@@ -67,7 +68,7 @@ function processEvent(event) {
                   
 
                 }
-                if (isDefined(messages) && messages.length > 1) {
+                else if (isDefined(messages) && messages.length > 1) {
                     const fbDatas = messages.filter(element => element.platform == "facebook");
                     if (fbDatas.length > 0) {
                     fbDatas.forEach(value => {
