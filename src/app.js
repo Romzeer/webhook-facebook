@@ -117,7 +117,6 @@ function processEvent(event) {
                               let test2 = {
                                 text: value.title,
                                 quick_replies: quickReplies,
-                                is_echo: true
                             }
                             messagesDatas.push(test2);
                         //    sendFBMessage(sender, {
@@ -229,7 +228,6 @@ function sendFBMessage(sender, messageData, i) {
             message: messageData[i]
         }
     }, (error, response, body) => {
-        console.log(response);
         if (error) {
             console.log('Error sending message: ', error);
         } else if (response.body.error) {
@@ -254,7 +252,6 @@ function sendFBSenderAction(sender, action, callback) {
                 sender_action: action
             }
         }, (error, response, body) => {
-            console.log(response);
             if (error) {
                 console.log('Error:', error);
             } else if (response.body.error) {
