@@ -66,6 +66,7 @@ function processEvent(event) {
                                 return {"text" : button.text,
                                         "payload": button.payload}
                             });
+                            console.log(buttons);
                             let newMessage = {
                                 "attachment": {
                                     "type": "template",
