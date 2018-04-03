@@ -52,7 +52,7 @@ function processEvent(event) {
                 console.log(messages);
                 if (isDefined(messages) && messages.length > 1) {
                     const fbDatas = messages.filter(element => element.platform == "facebook");
-                    if (fbDatas) {
+                    if (fbDatas.length > 0) {
                     fbDatas.forEach(value => {
                        
                         if (value.type == "0") {
