@@ -54,7 +54,6 @@ function processEvent(event) {
                     const fbDatas = messages.filter(element => element.platform == "facebook");
                     if (fbDatas.length > 0) {
                     fbDatas.forEach(value => {
-                        setTimeout(() => {
                        
                         if (value.type == "0") {
 
@@ -106,9 +105,7 @@ function processEvent(event) {
                                 quick_replies: quickReplies
                             });
                         }
-                    })
-                }, 10000);
-
+                    });
                 } else {
                     messages.forEach(value => {
                         if (value.type == "0") {
@@ -234,6 +231,7 @@ function sendFBSenderAction(sender, action, callback) {
                 sender_action: action
             }
         }, (error, response, body) => {
+            console.log(response);
             if (error) {
                 console.log('Error sending action: ', error);
             } else if (response.body.error) {
