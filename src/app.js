@@ -107,7 +107,7 @@ function processEvent(event) {
                             });
                         }
                     })
-                }, 2500);
+                }, 10000);
 
                 } else {
                     messages.forEach(value => {
