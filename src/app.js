@@ -100,10 +100,10 @@ function processEvent(event) {
                                   "payload": reply
                                 };
                               }); 
-                            async.queue(sendFBMessage(sender, {
+                           sendFBMessage(sender, {
                                 text: value.title,
                                 quick_replies: quickReplies
-                            }));
+                            });
                         }
                     })
                 } else {
