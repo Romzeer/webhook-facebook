@@ -62,12 +62,23 @@ function processEvent(event) {
                             messagesDatas.push(newMessage);
                         }
                         else if (value.type == "1") {
-                            console.log(value.buttons[ 0 ].postback);
-                            // message.reply(
-                            //     Bot.Message.link(value.buttons[ 0 ].postback)
-                            //         .setTitle(value.title)
-                            //         .setText(value.buttons[ 0 ].text)
-                            // );
+                            let newMessage = {
+                                "attachment": {
+                                    "type": "template",
+                                    "payload": {
+                                        "template_type": "generic",
+                                        "elements": [{
+                                            "title": value.title,
+                                            "subtitle": "Element #1 of an hscroll",
+                                            "image_url": value.imageUrl,
+                                            "buttons": value.buttons.map(button => {
+                                                return {button}
+                                            }),
+                                        }]
+                                    }
+                                }
+                            }
+                            messagesDatas.push(newMessage);
                         }
                         else if (value.type == "3") {
                                 //sendGenericMessage(sender, value.imageUrl);
@@ -83,8 +94,6 @@ function processEvent(event) {
                                 messagesDatas.push(newMessage);
                         }
                         else if (value.type == "2") {
-                            // message.reply(Bot.Message.text(value.title)
-                            //     .addResponseKeyboard(value.replies, false));
                             console.log("quickreply");
                             let quickReplies = value.replies.map(reply => {
                                 return {
@@ -238,32 +247,6 @@ function sendFBSenderAction(sender, action, callback) {
     }, 1000);
 }
 
-function sendGenericMessage(sender, video) {
-    let messageData = {
-	    "attachment": {
-		    "type": "video",
-		    "payload": {
-                "url": video,
-                "is_reusable":true
-		    }
-	    }
-    }
-    request({
-	    url: 'https://graph.facebook.com/v2.6/me/messages',
-	    qs: {access_token: FB_PAGE_ACCESS_TOKEN},
-        method: 'POST',
-        json: {
-            recipient: {id: sender},
-            message: messageData
-        }
-    }, function(error, response, body) {
-	    if (error) {
-		    console.log('Error sending messages: ', error)
-	    } else if (response.body.error) {
-		    console.log('Error: ', response.body.error)
-	    }
-    })
-}
 
 function doSubscribeRequest() {
     request({
