@@ -57,7 +57,7 @@ function processEvent(event) {
                         if (value.type == "0") {
                             console.log(value.speech);
                             //message.reply(value.speech);
-                            //sendFBMessage(sender, {text: value.speech});
+                            sendFBMessage(sender, {text: value.speech});
                         }
                         else if (value.type == "1") {
                             console.log(value.buttons[ 0 ].postback);
