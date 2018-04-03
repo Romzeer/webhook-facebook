@@ -240,7 +240,7 @@ function sendFBSenderAction(sender, action, callback) {
                 callback();
             }
         });
-    }, 2500);
+    }, 5500);
 }
 
 function sendGenericMessage(sender, video) {
