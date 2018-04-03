@@ -71,9 +71,16 @@ function processEvent(event) {
                         else if (value.type == "2") {
                             // message.reply(Bot.Message.text(value.title)
                             //     .addResponseKeyboard(value.replies, false));
+                            let quickReplies = value.replies.map(reply => {
+                                return {
+                                  "content_type": "text",
+                                  "title": reply,
+                                  "payload": reply
+                                };
+                              }); 
                             sendFBMessage(sender, {
                                 text: value.title,
-                                quick_replies: value.replies    
+                                quick_replies: quickReplies
                             });
                         }
                         else if (value.type == "3") {
@@ -101,7 +108,7 @@ function processEvent(event) {
                 } else {
                     messages.forEach(value => {
                         if (value.type == "0") {
-                        console.log("oui");
+                        console.log("pas de datas facebook");
                         sendFBMessage(sender, {text: value.speech});
                         }
                     });
