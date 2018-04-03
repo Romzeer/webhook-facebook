@@ -161,6 +161,7 @@ function processEvent(event) {
                     // async.eachSeries(splittedText, textPart => {
                         let newMessage = {text: responseText};
                         messagesDatas.push(newMessage);
+                        console.log(messagesDatas);
                         sendFBMessage(sender, messagesDatas, 1);
                    // });
                 }
