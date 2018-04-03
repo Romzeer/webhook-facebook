@@ -82,7 +82,8 @@ function processEvent(event) {
                                             url: value.imageUrl,
                                             is_reusable:true
                                         }
-                                    }
+                                    },
+                                    is_echo: true
                                 });
                             } else {
 
@@ -102,7 +103,8 @@ function processEvent(event) {
                               }); 
                            sendFBMessage(sender, {
                                 text: value.title,
-                                quick_replies: quickReplies
+                                quick_replies: quickReplies,
+                                is_echo: true
                             });
                         }
                     });
