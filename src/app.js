@@ -103,7 +103,7 @@ function processEvent(event) {
                             async.queue(sendFBMessage(sender, {
                                 text: value.title,
                                 quick_replies: quickReplies
-                            }), callback);
+                            }));
                         }
                     })
                 } else {
