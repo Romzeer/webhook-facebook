@@ -59,8 +59,9 @@ function processEvent(event) {
                     .then(function (response) {
                       console.log(response);
                       console.log(response.data[1][0]);
-                      let responseMessage = response.data[2][0];
-                      sendFBMessage(sender, {text: responseMessage}, 0);
+                      let responseMessage = {text: response.data[2][0]};
+                      messagesDatas.push(responseMessage);
+                      sendFBMessage(sender, messagesDatas, 0);
                     })
                     .catch(function (error) {
                       console.log(error);
