@@ -48,6 +48,7 @@ function processEvent(event) {
                 let responseData = response.result.fulfillment.data;
                 let action = response.result.action;
                 let messages = response.result.fulfillment.messages;
+                console.log(messages);
                 let messagesDatas = [];
                 if (isDefined(messages) && messages.length > 1) {
                     const fbDatas = messages.filter(element => element.platform == "facebook");
