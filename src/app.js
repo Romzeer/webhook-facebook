@@ -236,7 +236,7 @@ function sendFBMessage(sender, messageData, i) {
         } else {
             console.log("dans la réponse");
             if(i < messageData.length) {
-                sendFBMessage(sender, messageData , callback, i+1);
+                sendFBMessage(sender, messageData, i+1);
             }
         }
     });
