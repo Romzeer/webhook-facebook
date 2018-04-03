@@ -64,7 +64,7 @@ function processEvent(event) {
                         else if (value.type == "1") {
                             let buttons = value.buttons.map(button => {
                                 return {"text" : button.text,
-                                        "payload": button.payload}
+                                        "payload": button.postback}
                             });
                             console.log(buttons);
                             let newMessage = {
