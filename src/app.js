@@ -71,9 +71,14 @@ function processEvent(event) {
                         else if (value.type == "2") {
                             // message.reply(Bot.Message.text(value.title)
                             //     .addResponseKeyboard(value.replies, false));
+                            sendFBMessage(sender, {
+                                text: value.title,
+                                quick_replies: value.replies    
+                            });
                         }
                         else if (value.type == "3") {
                             //console.log(path.extname(value.imageUrl));
+
                             
                             if (value.imageUrl.includes(".gif") && !value.imageUrl.includes(PNG, JPG, JPEG)) {
                                 console.log("oui");
