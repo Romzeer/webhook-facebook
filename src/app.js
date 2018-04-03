@@ -56,6 +56,7 @@ function processEvent(event) {
                     fbDatas.map(value => {
                        
                         if (value.type == "0") {
+                            
                             console.log(value.speech);
                             sendFBMessage(sender, {text: value.speech});
                         }
