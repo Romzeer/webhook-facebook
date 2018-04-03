@@ -54,6 +54,7 @@ function processEvent(event) {
                     const fbDatas = messages.filter(element => element.platform == "facebook");
                     if (fbDatas.length > 0) {
                     fbDatas.forEach(value => {
+                        setTimeout(() => {
                        
                         if (value.type == "0") {
 
@@ -106,6 +107,8 @@ function processEvent(event) {
                             });
                         }
                     })
+                }, 2500);
+
                 } else {
                     messages.forEach(value => {
                         if (value.type == "0") {
@@ -196,7 +199,6 @@ function chunkString(s, len) {
 }
 
 function sendFBMessage(sender, messageData, callback) {
-    console.log(messageData);
     setTimeout(() => {
     request({
         url: 'https://graph.facebook.com/v2.6/me/messages',
@@ -218,7 +220,7 @@ function sendFBMessage(sender, messageData, callback) {
             callback();
         }
     });
-}, 3000);
+}, 1000);
 }
 
 function sendFBSenderAction(sender, action, callback) {
