@@ -57,7 +57,7 @@ function processEvent(event) {
                        
                         if (value.type == "0") {
 
-                            console.log(value.speech);
+                            console.log("TEEXT");
                             sendFBMessage(sender, {text: value.speech});
                         }
                         else if (value.type == "1") {
@@ -92,6 +92,7 @@ function processEvent(event) {
                         else if (value.type == "2") {
                             // message.reply(Bot.Message.text(value.title)
                             //     .addResponseKeyboard(value.replies, false));
+                            console.log("quickreply");
                             let quickReplies = value.replies.map(reply => {
                                 return {
                                   "content_type": "text",
