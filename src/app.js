@@ -63,8 +63,9 @@ function processEvent(event) {
                         }
                         else if (value.type == "1") {
                             let buttons = value.buttons.map(button => {
-                                return {"text" : button.text,
-                                        "payload": button.postback}
+                                return {"type" : "web_url",
+                                        "url": button.postback,
+                                        "title": button.text}
                             });
                             console.log(buttons);
                             let newMessage = {
@@ -74,7 +75,7 @@ function processEvent(event) {
                                         "template_type": "generic",
                                         "elements": [{
                                             "title": value.title,
-                                            "subtitle": "Element #1 of an hscroll",
+                                            "subtitle": "",
                                             "image_url": value.imageUrl,
                                             "buttons": buttons,
                                         }]
