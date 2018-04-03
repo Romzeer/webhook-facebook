@@ -217,7 +217,7 @@ function chunkString(s, len) {
     return output;
 }
 
-function sendFBMessage(sender, messageData, callback, i) {
+function sendFBMessage(sender, messageData, i) {
  
     request({
         url: 'https://graph.facebook.com/v2.6/me/messages',
@@ -229,17 +229,15 @@ function sendFBMessage(sender, messageData, callback, i) {
         }
     }, (error, response, body) => {
         console.log(response);
-        if(i < messages.length) {
-            sendFBMessage(sender, messageData , callback, i+1);
-        }
         if (error) {
             console.log('Error sending message: ', error);
         } else if (response.body.error) {
             console.log('Error: ', response.body.error);
-        }
-
-        if (callback) {
-            callback();
+        } else {
+            console.log("dans la réponse");
+            if(i < messages.length) {
+                sendFBMessage(sender, messageData , callback, i+1);
+            }
         }
     });
 }
