@@ -48,7 +48,7 @@ function processEvent(event) {
                 let responseData = response.result.fulfillment.data;
                 let action = response.result.action;
                 let messages = response.result.fulfillment.messages;
-                console.log(response.result);
+                console.log(response.parameters);
                 let messagesDatas = [];
                 if (action == "input.whatis") {
 
