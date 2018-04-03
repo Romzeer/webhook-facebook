@@ -56,7 +56,7 @@ function processEvent(event) {
                     fbDatas.map(value => {
                        
                         if (value.type == "0") {
-                            
+
                             console.log(value.speech);
                             sendFBMessage(sender, {text: value.speech});
                         }
@@ -196,6 +196,7 @@ function chunkString(s, len) {
 
 function sendFBMessage(sender, messageData, callback) {
     console.log(messageData);
+    setTimeout(() => {
     request({
         url: 'https://graph.facebook.com/v2.6/me/messages',
         qs: {access_token: FB_PAGE_ACCESS_TOKEN},
@@ -216,6 +217,7 @@ function sendFBMessage(sender, messageData, callback) {
             callback();
         }
     });
+}, 1000);
 }
 
 function sendFBSenderAction(sender, action, callback) {
