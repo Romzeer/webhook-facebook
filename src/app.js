@@ -118,7 +118,7 @@ function processEvent(event) {
                 } else {
                     messages.forEach(value => {
                         if (value.type == "0") {
-                            let newMessage = value.speech;
+                            let newMessage = {text: value.speech};
                             messagesDatas.push(newMessage);
                         }
                     });
