@@ -63,7 +63,7 @@ function processEvent(event) {
                       let responseMessage = {text: response.data[2][0]};
                      // let secondMessage = {text: response.data[2][1]};
                       let askMessage = {text: "Is it correct ?"};
-                      messagesDatas.push(responseMessage);
+                      messagesDatas.push(responseMessage, askMessage);
                       sendFBMessage(sender, messagesDatas, 0);
                     })
                     .catch(function (error) {
