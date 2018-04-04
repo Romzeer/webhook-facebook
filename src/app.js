@@ -63,7 +63,7 @@ function processEvent(event) {
 
                         if (response.data[2][0] ==(param + " may refer to:")) {
                             let responseMessage = {text: response.data[2][1]};
-                            secondMessage = {text: response.data[2][1]};
+                            secondMessage = {text: response.data[2][2]};
                             let askMessage = {text: "Is it correct ?"};
                             messagesDatas.push(responseMessage, askMessage);
                             sendFBMessage(sender, messagesDatas, 0);
