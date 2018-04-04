@@ -99,10 +99,12 @@ function processEvent(event) {
                     let steps = mathsteps.simplifyExpression(text);
                    
                     steps.forEach(step => {
-                        console.log("before change: " + step.oldNode.toString());   // before change: 2 x + 2 x + x + x
-                        console.log("change: " + step.changeType);                  // change: ADD_POLYNOMIAL_TERMS
-                        console.log("after change: " + step.newNode.toString());    // after change: 6 x
-                        console.log("# of substeps: " + step.substeps.length);      // # of substeps: 3
+                        let beforeChange = {text: "before change: " + step.oldNode.toString()};   // before change: 2 x + 2 x + x + x
+                        let change = {text: "change: " + step.changeType};                  // change: ADD_POLYNOMIAL_TERMS
+                        let afterChange = {text: "after change: " + step.newNode.toString()};    // after change: 6 x
+                        let substeps = {text: "# of substeps: " + step.substeps.length};      // # of substeps: 3
+                        messagesDatas.push(beforeChange, change, afterChange, substeps);
+                        sendFBMessage(sender, messagesDatas, 0);
                     });
                     
                 }
