@@ -61,7 +61,7 @@ function processEvent(event) {
                     .then(function (response) {
                         console.log(response.data[2]);
                       
-                        if (isDefined(response.data[2])) {
+                        if (response.data[2][0] != "") {
                             let responseMessage = {text: response.data[2][0]};
                             secondMessage = {text: response.data[2][1]};
                             let askMessage = {text: "Is it correct ?"};
