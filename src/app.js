@@ -59,9 +59,9 @@ function processEvent(event) {
                     console.log(url);
                     axios.get(url)
                     .then(function (response) {
-                        console.log(response.data);
+                        console.log(response.data[2]);
                       
-                        if (response.data) {
+                        if (response.data[2]) {
                             let responseMessage = {text: response.data[2][0]};
                             secondMessage = {text: response.data[2][1]};
                             let askMessage = {text: "Is it correct ?"};
