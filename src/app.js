@@ -60,8 +60,15 @@ function processEvent(event) {
                     axios.get(url)
                     .then(function (response) {
                         console.log(response.data[2]);
+
+                        if (response.data[2][0] ==(param + " may refer to:")) {
+                            let responseMessage = {text: response.data[2][1]};
+                            let askMessage = {text: "Is it correct ?"};
+                            messagesDatas.push(responseMessage, askMessage);
+                            sendFBMessage(sender, messagesDatas, 0);
+                        }
                         
-                        if (!Array.isArray(response.data[2]) || !response.data[2].length) {
+                        else if (!Array.isArray(response.data[2]) || !response.data[2].length) {
                             let askMessage = {text: "Sorry, i have no idea of what " + param +" means... :("};
                             messagesDatas.push(askMessage);
                             sendFBMessage(sender, messagesDatas, 0);
