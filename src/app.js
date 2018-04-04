@@ -61,7 +61,7 @@ function processEvent(event) {
                     .then(function (response) {
                         console.log(response.data[2][0]);
 
-                        if (response.data[2][0] == (param + " may refer to:")) {
+                        if (response.data[2][0].includes("may refer to:")) {
                             let responseMessage = {text: response.data[2][1]};
                             secondMessage = {text: response.data[2][2]};
                             let askMessage = {text: "Is it correct ?"};
