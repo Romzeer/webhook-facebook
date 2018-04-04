@@ -8,6 +8,8 @@ const request = require('request');
 const JSONbig = require('json-bigint');
 const async = require('async');
 const axios = require('axios');
+const mathsteps = require('mathsteps');
+
 
 const REST_PORT = (process.env.PORT || 5000);
 const APIAI_ACCESS_TOKEN = process.env.APIAI_ACCESS_TOKEN;
@@ -93,6 +95,15 @@ function processEvent(event) {
                       messagesDatas.push(secondMessage, secAskMessage);
                       sendFBMessage(sender, messagesDatas, 0); 
                       secondMessage = "";
+                }
+                if (action == "input.calcul") {
+                    let steps = mathsteps.simplifyExpression(text);
+                    steps.forEach(step => {
+                        console.log("before change: " + step.oldNode.toString());   // before change: 2 x + 2 x + x + x
+                        console.log("change: " + step.changeType);                  // change: ADD_POLYNOMIAL_TERMS
+                        console.log("after change: " + step.newNode.toString());    // after change: 6 x
+                        console.log("# of substeps: " + step.substeps.length);      // # of substeps: 3
+                    });
                 }
                 
                 else if (isDefined(messages) && messages.length > 1) {
