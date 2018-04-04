@@ -23,7 +23,7 @@ const apiAiService = apiai(APIAI_ACCESS_TOKEN, {language: APIAI_LANG, requestSou
 console.log(apiAiService);
 
 const sessionIds = new Map();
-const secondMessage = "";
+var secondMessage = "";
 function processEvent(event) {
     var sender = event.sender.id.toString();
 
