@@ -54,24 +54,25 @@ function processEvent(event) {
 
                 if (action == "input.whatis") {
                     let param = response.result.parameters.any;
-                    console.log(param);
+               
                     let url = `https://en.wikipedia.org/w/api.php?action=opensearch&search=${param}&limit=2&profile=strict&namespace=0&format=json`
-                    console.log(url);
+            
                     axios.get(url)
                     .then(function (response) {
                         console.log(response.data[2]);
-                      
-                        if (response.data[2][0] != "") {
+                        
+                        if (!Array.isArray(response.data[2]) || !response.data[2].length) {
+                            let askMessage = {text: "Sorry, i have no idea of what " + param +" means... :("};
+                            messagesDatas.push(askMessage);
+                            sendFBMessage(sender, messagesDatas, 0);
+                          }
+                        else { 
                             let responseMessage = {text: response.data[2][0]};
                             secondMessage = {text: response.data[2][1]};
                             let askMessage = {text: "Is it correct ?"};
                             messagesDatas.push(responseMessage, askMessage);
                             sendFBMessage(sender, messagesDatas, 0);
-                        } else {
-                            let askMessage = {text: "No idea sorry :("};
-                            messagesDatas.push(askMessage);
-                            sendFBMessage(sender, messagesDatas, 0);
-                        }
+                        } 
                     })
                     .catch(function (error) {
                       console.log(error);
