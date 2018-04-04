@@ -99,10 +99,13 @@ function processEvent(event) {
                 if (action == "input.calcul") {
                     let steps = mathsteps.solveEquation(text);
                     steps.forEach(step => {
-                        console.log("before change: " + step.oldEquation.ascii());  // e.g. before change: 2x + 3x = 35
-                        console.log("change: " + step.changeType);                  // e.g. change: SIMPLIFY_LEFT_SIDE
-                        console.log("after change: " + step.newEquation.ascii());   // e.g. after change: 5x = 35
-                        console.log("# of substeps: " + step.substeps.length);      // e.g. # of substeps: 2
+                      let beforeChange = { text: "before change: " + step.oldEquation.ascii()};  // e.g. before change: 2x + 3x = 35
+                      let change = { text: "change: " + step.changeType};                  // e.g. change: SIMPLIFY_LEFT_SIDE
+                      let afterChange = { text: "after change: " + step.newEquation.ascii()};   // e.g. after change: 5x = 35
+                      let substeps = { text: "# of substeps: " + step.substeps.length};      // e.g. # of substeps: 2
+                        
+                      messagesDatas.push(beforeChange, change, afterChange, substeps);
+                      sendFBMessage(sender, messagesDatas, 0);
                     });
                 }
                 
