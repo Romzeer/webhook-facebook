@@ -98,6 +98,7 @@ function processEvent(event) {
                 }
                 if (action == "input.calcul") {
                     let steps = mathsteps.solveEquation(text);
+                    console.log(steps);
                     steps.forEach(step => {
                         console.log(step);
                         console.log("before change: " + step.oldEquation.ascii());  // e.g. before change: 2x + 3x = 35
