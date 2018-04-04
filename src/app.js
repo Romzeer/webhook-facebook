@@ -51,6 +51,7 @@ function processEvent(event) {
                 let messages = response.result.fulfillment.messages;
                 console.log(response.result.parameters);
                 let messagesDatas = [];
+
                 if (action == "input.whatis") {
                     let param = response.result.parameters.any;
                     console.log(param);
@@ -61,17 +62,23 @@ function processEvent(event) {
                       console.log(response);
                       console.log(response.data[1][0]);
                       let responseMessage = {text: response.data[2][0]};
-                     // let secondMessage = {text: response.data[2][1]};
+                      let secondMessage = {text: response.data[2][1]};
                       let askMessage = {text: "Is it correct ?"};
                       messagesDatas.push(responseMessage, askMessage);
                       sendFBMessage(sender, messagesDatas, 0);
                     })
                     .catch(function (error) {
                       console.log(error);
-                    });
-                  
-
+                    }); 
                 }
+                if (action == "defaultttt.defaultttt-no") {
+                    
+                     
+                      let askMessage = {text: "And now is it correct ?"};
+                      messagesDatas.push(secondMessage, askMessage);
+                      sendFBMessage(sender, messagesDatas, 0); 
+                }
+                
                 else if (isDefined(messages) && messages.length > 1) {
                     const fbDatas = messages.filter(element => element.platform == "facebook");
                     if (fbDatas.length > 0) {
