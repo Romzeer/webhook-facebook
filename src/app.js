@@ -22,7 +22,7 @@ const JPG = ".jpg";
 const PNG = ".png";
 
 const apiAiService = apiai(APIAI_ACCESS_TOKEN, {language: APIAI_LANG, requestSource: "fb"});
-console.log(apiAiService);
+
 
 const sessionIds = new Map();
 var secondMessage = "";
