@@ -54,13 +54,15 @@ function processEvent(event) {
                 if (action == "input.whatis") {
                     let param = response.result.parameters.any;
                     console.log(param);
-                    let url = `https://en.wikipedia.org/w/api.php?action=opensearch&search=${param}&limit=1&profile=strict&namespace=0&format=json`
+                    let url = `https://en.wikipedia.org/w/api.php?action=opensearch&search=${param}&limit=2&profile=strict&namespace=0&format=json`
                     console.log(url);
                     axios.get(url)
                     .then(function (response) {
                       console.log(response);
                       console.log(response.data[1][0]);
                       let responseMessage = {text: response.data[2][0]};
+                     // let secondMessage = {text: response.data[2][1]};
+                      let askMessage = {text: "Is it correct ?"};
                       messagesDatas.push(responseMessage);
                       sendFBMessage(sender, messagesDatas, 0);
                     })
