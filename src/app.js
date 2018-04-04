@@ -101,7 +101,7 @@ function processEvent(event) {
                     steps.forEach(step => {
                         let beforeChange = {text: "before change: " + step.oldNode.toString()};   // before change: 2 x + 2 x + x + x
                         let change = {text: "change: " + step.changeType};                  // change: ADD_POLYNOMIAL_TERMS
-                        let afterChange = {text: "after change: " + step.newNode.toString()};    // after change: 6 x
+                        let afterChange = {text: "Result: " + step.newNode.toString()};    // after change: 6 x
                         let substeps = {text: "# of substeps: " + step.substeps.length};      // # of substeps: 3
                         messagesDatas.push(beforeChange, change, afterChange, substeps);
                         sendFBMessage(sender, messagesDatas, 0);
