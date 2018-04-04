@@ -74,8 +74,8 @@ function processEvent(event) {
                 if (action == "defaultttt.defaultttt-no") {
                     
                      
-                      let askMessage = {text: "And now is it correct ?"};
-                      messagesDatas.push(secondMessage, askMessage);
+                      let secAskMessage = {text: "And now is it correct ?"};
+                      messagesDatas.push(secondMessage, secAskMessage);
                       sendFBMessage(sender, messagesDatas, 0); 
                 }
                 
