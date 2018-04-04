@@ -55,7 +55,7 @@ function processEvent(event) {
                 if (action == "input.whatis") {
                     let param = response.result.parameters.any;
                
-                    let url = `https://en.wikipedia.org/w/api.php?action=opensearch&search=${param}&limit=2&profile=strict&namespace=0&format=json`
+                    let url = `https://en.wikipedia.org/w/api.php?action=opensearch&search=${param}&limit=3&profile=strict&namespace=0&format=json`
             
                     axios.get(url)
                     .then(function (response) {
@@ -63,6 +63,7 @@ function processEvent(event) {
 
                         if (response.data[2][0] ==(param + " may refer to:")) {
                             let responseMessage = {text: response.data[2][1]};
+                            secondMessage = {text: response.data[2][1]};
                             let askMessage = {text: "Is it correct ?"};
                             messagesDatas.push(responseMessage, askMessage);
                             sendFBMessage(sender, messagesDatas, 0);
