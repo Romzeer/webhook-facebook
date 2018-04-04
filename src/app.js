@@ -59,13 +59,18 @@ function processEvent(event) {
                     console.log(url);
                     axios.get(url)
                     .then(function (response) {
-                      console.log(response);
-                      console.log(response.data[1][0]);
-                      let responseMessage = {text: response.data[2][0]};
-                      secondMessage = {text: response.data[2][1]};
-                      let askMessage = {text: "Is it correct ?"};
-                      messagesDatas.push(responseMessage, askMessage);
-                      sendFBMessage(sender, messagesDatas, 0);
+                      
+                        if (response.data) {
+                            let responseMessage = {text: response.data[2][0]};
+                            secondMessage = {text: response.data[2][1]};
+                            let askMessage = {text: "Is it correct ?"};
+                            messagesDatas.push(responseMessage, askMessage);
+                            sendFBMessage(sender, messagesDatas, 0);
+                        } else {
+                            let askMessage = {text: "No idea sorry :("};
+                            messagesDatas.push(askMessage);
+                            sendFBMessage(sender, messagesDatas, 0);
+                        }
                     })
                     .catch(function (error) {
                       console.log(error);
