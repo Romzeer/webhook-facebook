@@ -59,11 +59,11 @@ function processEvent(event) {
             
                     axios.get(url)
                     .then(function (response) {
-                        console.log(response.data[2]);
+                        console.log(response.data[2][0]);
 
-                        if (response.data[2][0] ==(param + " may refer to:")) {
-                            let responseMessage = {text: response.data[2][2]};
-                            secondMessage = {text: response.data[2][3]};
+                        if (response.data[2][0] == (param + " may refer to:")) {
+                            let responseMessage = {text: response.data[2][1]};
+                            secondMessage = {text: response.data[2][2]};
                             let askMessage = {text: "Is it correct ?"};
                             messagesDatas.push(responseMessage, askMessage);
                             sendFBMessage(sender, messagesDatas, 0);
