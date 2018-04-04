@@ -99,13 +99,13 @@ function processEvent(event) {
                 if (action == "input.calcul") {
                     let steps = mathsteps.simplifyExpression(text);
                     steps.forEach(step => {
-                        console.log("before change: " + step.oldEquation);  // e.g. before change: 2x + 3x = 35
+                        console.log("before change: " + step.oldEquation.print());  // e.g. before change: 2x + 3x = 35
                         console.log("change: " + step.changeType);                  // e.g. change: SIMPLIFY_LEFT_SIDE
-                        console.log("after change: " + step.newEquation);   // e.g. after change: 5x = 35
+                        console.log("after change: " + step.newEquation.print());   // e.g. after change: 5x = 35
                         console.log("# of substeps: " + step.substeps.length);    // e.g. # of substeps: 2
                         let beforeChange = { text: "before change: " + step.oldEquation};  // e.g. before change: 2x + 3x = 35
                         let change = { text: "change: " + step.changeType};                  // e.g. change: SIMPLIFY_LEFT_SIDE
-                        let afterChange = { text: "after change: " + step.newEquation};   // e.g. after change: 5x = 35
+                        let afterChange = { text: "after change: " + step.newEquation.print()};   // e.g. after change: 5x = 35
                         let substeps = { text: "# of substeps: " + step.substeps.length};   
                     });
                     
