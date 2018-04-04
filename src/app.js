@@ -23,7 +23,7 @@ const apiAiService = apiai(APIAI_ACCESS_TOKEN, {language: APIAI_LANG, requestSou
 console.log(apiAiService);
 
 const sessionIds = new Map();
-
+const secondMessage = "";
 function processEvent(event) {
     var sender = event.sender.id.toString();
 
@@ -62,7 +62,7 @@ function processEvent(event) {
                       console.log(response);
                       console.log(response.data[1][0]);
                       let responseMessage = {text: response.data[2][0]};
-                      let secondMessage = {text: response.data[2][1]};
+                      secondMessage = {text: response.data[2][1]};
                       let askMessage = {text: "Is it correct ?"};
                       messagesDatas.push(responseMessage, askMessage);
                       sendFBMessage(sender, messagesDatas, 0);
@@ -77,6 +77,7 @@ function processEvent(event) {
                       let secAskMessage = {text: "And now is it correct ?"};
                       messagesDatas.push(secondMessage, secAskMessage);
                       sendFBMessage(sender, messagesDatas, 0); 
+                      secondMessage = "";
                 }
                 
                 else if (isDefined(messages) && messages.length > 1) {
