@@ -107,7 +107,7 @@ function processEvent(event) {
                             let afterChange = {text: "Step " + (i + 1) + " : " + step.newNode.toString()};   
                         }
                         else if ((i + 1) >= steps.length) {
-                            let afterChange = {text: "Result : " + step.newNode.toString()};
+                            let finalChange = {text: "Result : " + step.newNode.toString()};
                         }
                        messagesDatas.push(change, afterChange);
                         
