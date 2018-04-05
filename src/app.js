@@ -97,7 +97,7 @@ function processEvent(event) {
                 }
                 if (action == "input.calcul") {
                     let steps = mathsteps.simplifyExpression(text);
-                    console.log(steps);
+                    console.log(steps.length);
                    
                     steps.forEach(function(step,i) {
                         console.log(i);
