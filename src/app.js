@@ -103,12 +103,12 @@ function processEvent(event) {
                         console.log(i);
                       
                         let change = {text: "change: " + step.changeType};
-                        if ((i + 1) < steps.length) {
-                            let afterChange = {text: "Step " + (i + 1) + " : " + step.newNode.toString()};   
-                        }
-                        else if ((i + 1) >= steps.length) {
-                            let finalChange = {text: "Result : " + step.newNode.toString()};
-                        }
+                      
+                        
+                            let afterChange = {
+                                text:  (i + 1) < steps.length ? "Step:" + i+1 : "Result:"  + step.newNode.toString()};   
+                        
+                        
                        messagesDatas.push(change, afterChange);
                         
                     });
