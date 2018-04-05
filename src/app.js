@@ -97,6 +97,7 @@ function processEvent(event) {
                 }
                 if (action == "input.calcul") {
                     let steps = mathsteps.simplifyExpression(text);
+                    console.log(steps.length);
                    
                     steps.forEach(step => {
                         let beforeChange = {text: "before change: " + step.oldNode.toString()};   // before change: 2 x + 2 x + x + x
@@ -104,8 +105,9 @@ function processEvent(event) {
                         let afterChange = {text: "Result: " + step.newNode.toString()};    // after change: 6 x
                         let substeps = {text: "# of substeps: " + step.substeps.length};      // # of substeps: 3
                         messagesDatas.push(beforeChange, change, afterChange, substeps);
-                        sendFBMessage(sender, messagesDatas, 0);
+                        
                     });
+                    sendFBMessage(sender, messagesDatas, 0);
                     
                 }
                 
