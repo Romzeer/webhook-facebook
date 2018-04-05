@@ -102,10 +102,12 @@ function processEvent(event) {
                     steps.forEach(function(step,i) {
                       
                         let change = {text: "change: " + step.changeType};
-                        if (i < steps.length) {                 
+                        if (i < steps.length) { 
+                            console.log("inferieur");                
                             let afterChange = {text: "Step " + (i+1) + " : " + step.newNode.toString()};   
                         }
                         else if (i >= steps.length) {
+                            console.log("superieur");  
                             let afterChange = {text: "Result " + i + " : " + step.newNode.toString()};
                         }
                        messagesDatas.push(change, afterChange);
