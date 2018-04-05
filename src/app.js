@@ -106,7 +106,7 @@ function processEvent(event) {
                       
                         
                             let afterChange = {
-                                text:  (i + 1) < steps.length ? "Step:" + i+1 : "Result:"  + step.newNode.toString()};   
+                                text:  ((i + 1) < steps.length ? "Step" + i : "Result:")  + step.newNode.toString()};   
                         
                         
                        messagesDatas.push(change, afterChange);
