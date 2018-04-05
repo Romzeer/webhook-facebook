@@ -103,14 +103,8 @@ function processEvent(event) {
                         console.log(i);
                       
                         let change = {text: "change: " + step.changeType};
-                        if (i + 1 < steps.length) { 
-                            console.log("inferieur");                
-                            let afterChange = {text: "Step " + i + " : " + step.newNode.toString()};   
-                        }
-                        else if (i + 1 >= steps.length) {
-                            console.log("superieur");  
-                            let afterChange = {text: "Result : " + step.newNode.toString()};
-                        }
+                        let afterChange = {text: "Step " + (i + 1) + " : " + step.newNode.toString()};   
+                      
                        messagesDatas.push(change, afterChange);
                         
                     });
