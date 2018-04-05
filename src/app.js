@@ -101,10 +101,14 @@ function processEvent(event) {
                    
                     steps.forEach(function(step,i) {
                       
-                        let change = {text: "change: " + step.changeType};                  // change: ADD_POLYNOMIAL_TERMS
-                        let afterChange = {text: "Step " + i + " : " + step.newNode.toString()};    // after change: 6 x
-                       // let substeps = {text: "# of substeps: " + step.substeps.length};      // # of substeps: 3
-                        messagesDatas.push(change, afterChange);
+                        let change = {text: "change: " + step.changeType};
+                        if (i < steps.length) {                 
+                            let afterChange = {text: "Step " + (i+1) + " : " + step.newNode.toString()};   
+                        }
+                        else if (i >= steps.length) {
+                            let afterChange = {text: "Result " + i + " : " + step.newNode.toString()};
+                        }
+                       messagesDatas.push(change, afterChange);
                         
                     });
                     sendFBMessage(sender, messagesDatas, 0);
