@@ -100,13 +100,14 @@ function processEvent(event) {
                     console.log(steps);
                    
                     steps.forEach(function(step,i) {
+                        console.log(i);
                       
                         let change = {text: "change: " + step.changeType};
                         if (i < steps.length) { 
                             console.log("inferieur");                
                             let afterChange = {text: "Step " + i + " : " + step.newNode.toString()};   
                         }
-                        else if (i + 1 >= steps.length) {
+                        else if (i == steps.length) {
                             console.log("superieur");  
                             let afterChange = {text: "Result : " + step.newNode.toString()};
                         }
