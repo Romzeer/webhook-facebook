@@ -107,10 +107,6 @@ function processEvent(event) {
                             console.log("inferieur");                
                             let afterChange = {text: "Step " + i + " : " + step.newNode.toString()};   
                         }
-                        else if (i == steps.length) {
-                            console.log("superieur");  
-                            let afterChange = {text: "Result : " + step.newNode.toString()};
-                        }
                        messagesDatas.push(change, afterChange);
                         
                     });
