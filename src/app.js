@@ -9,6 +9,7 @@ const JSONbig = require('json-bigint');
 const async = require('async');
 const axios = require('axios');
 const mathsteps = require('mathsteps');
+const config = require('../src/config');
 
 
 const REST_PORT = (process.env.PORT || 5000);
@@ -103,14 +104,14 @@ function processEvent(event) {
                     steps.forEach(function(step,i) {
                         console.log(i);
                       
-                        let change = {text: "change: " + step.changeType};
+                       // let change = {text: "change: " + step.changeType};
                       
                         
                             let afterChange = {
                                 text:  ((i + 1) < steps.length ? "Step " + (1+i) + " : " : "Result :")  + step.newNode.toString()};   
                         
                         
-                       messagesDatas.push(change, afterChange);
+                       messagesDatas.push(afterChange);
                         
                     });
                     let askSuggest = {text: "Do you want somme suggestion about " + type  + " ?"};
@@ -118,6 +119,24 @@ function processEvent(event) {
                     messagesDatas.push(askSuggest);
                     sendFBMessage(sender, messagesDatas, 0);
                     
+                }
+                if (action == "MentalCalcul.MentalCalcul-yes") {
+                    let type = response.result.parameters.type;
+                    let test = config.property.addition;
+                    console.log(test);
+
+                    // let quickReplies = config..map(reply => {
+                    //     return {
+                    //       "content_type": "text",
+                    //       "title": reply,
+                    //       "payload": reply
+                    //     };
+                    //   }); 
+                    //   let newMessage = {
+                    //     text: value.title,
+                    //     quick_replies: quickReplies,
+                    // }
+                    // messagesDatas.push(newMessage);
                 }
                 
                 else if (isDefined(messages) && messages.length > 1) {
