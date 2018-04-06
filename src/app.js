@@ -94,7 +94,7 @@ function processEvent(event) {
                       messagesDatas.push(secondMessage, secAskMessage);
                       sendFBMessage(sender, messagesDatas, 0); 
                       secondMessage = "";
-                }
+                };
                 if (action == "input.calcul") {
                     let steps = mathsteps.simplifyExpression(text);
                     let type = response.result.parameters.type;
@@ -114,7 +114,8 @@ function processEvent(event) {
                         
                     });
                     let askSuggest = {text: "Do you want somme suggestion about " + type  + " ?"};
-                    messageDatas.push(askSuggest);
+                    console.log(askSuggest);
+                    messagesDatas.push(askSuggest);
                     sendFBMessage(sender, messagesDatas, 0);
                     
                 }
