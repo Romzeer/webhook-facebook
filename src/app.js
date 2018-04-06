@@ -122,7 +122,7 @@ function processEvent(event) {
                 }
                 if (action == "MentalCalcul.MentalCalcul-yes") {
                     let operation = response.result.contexts.type;
-                    console.log(response.result.contexts.type);
+                    console.log(response.result.contexts);
                     //let test = config.property.addition;
                    let property = config.property.filter(element => element.type == operation);
                    console.log(property);
