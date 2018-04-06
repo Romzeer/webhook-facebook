@@ -6,10 +6,10 @@
             "type": "addition",
             "title": "Here it is !",
             "replies": [
-                "addition",
-                "Basic Equations",
-                "Prime and Composite",
-                "One-step equation",
+                "What is addition?",
+                "Add dec n°",
+                "Add fractions",
+                "What are multi digit additions",
                 "mixed operations"
             ]
         },
@@ -17,10 +17,10 @@
             "type": "subtraction",
             "title": "Just for you",
             "replies": [
-                "Basic Equations",
-                "Prime and Composite",
-                "One-step equation",
-                "mixed operations"
+                "Subtract 2 dec numbers: greater n°",
+                "Subtract decimals",
+                "Line up decimal subtraction",
+                "Subtract ratio n°"
             ]
         },
         {
@@ -31,7 +31,8 @@
                 "Basic Multiplication",
                 "Multiply Decimals",
                 "Multiply Ratios",
-                "Cross Multiplication"
+                "Cross Multiplication",
+                "X mixed fractions"
             ]
         },  
         {
@@ -40,8 +41,9 @@
             "replies": [
                 "Division of fraction",
                 "Divide mixed numbers",
-                "Order of operation",
-                "Divide 2 fractions"
+                "Divide rational n°",
+                "Divide 2 fractions",
+                "Divide fraction by whole number"
             ]
         },
         {
