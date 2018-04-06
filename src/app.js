@@ -9,7 +9,7 @@ const JSONbig = require('json-bigint');
 const async = require('async');
 const axios = require('axios');
 const mathsteps = require('mathsteps');
-const config = require('../src/config');
+const config = require('../src/config.json');
 
 
 const REST_PORT = (process.env.PORT || 5000);
@@ -123,7 +123,7 @@ function processEvent(event) {
                 if (action == "MentalCalcul.MentalCalcul-yes") {
                     let type = response.result.parameters.type;
                     let test = config.property.addition;
-                    console.log(test);
+                    console.log(config);
 
                     // let quickReplies = config..map(reply => {
                     //     return {

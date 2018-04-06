@@ -1,5 +1,5 @@
 
-let config = 
+
 {"property": 
     { "addition": {
         "title": "Here it is !",
@@ -52,5 +52,4 @@ let config =
     ]
   }
 }
-};
-exports.config;
+}
