@@ -114,9 +114,11 @@ function processEvent(event) {
                        messagesDatas.push(afterChange);
                         
                     });
-                    let askSuggest = {text: "Do you want somme suggestion about " + type  + " ?"};
-                    console.log(askSuggest);
-                    messagesDatas.push(askSuggest);
+                    if (isDefined(type)) {
+                        let askSuggest = {text: "Do you want somme suggestion about " + type  + " ?"};
+                        console.log(askSuggest);
+                        messagesDatas.push(askSuggest);
+                    }
                     sendFBMessage(sender, messagesDatas, 0);
                     
                 }
