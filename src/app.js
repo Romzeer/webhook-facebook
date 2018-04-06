@@ -122,24 +122,28 @@ function processEvent(event) {
                 }
                 if (action == "MentalCalcul.MentalCalcul-yes") {
                     let operation = response.result.contexts[0].parameters.type;
-                    console.log(response.result.contexts[0].parameters.type);
+
+                    if (isDefined(operation)) {
+                    //console.log(response.result.contexts[0].parameters.type);
 
                     //let test = config.property.addition;
                    let property = config.property.filter(element => element.type == operation);
-                   console.log(property);
+                   //console.log(property);
 
-                    // let quickReplies = config..map(reply => {
-                    //     return {
-                    //       "content_type": "text",
-                    //       "title": reply,
-                    //       "payload": reply
-                    //     };
-                    //   }); 
-                    //   let newMessage = {
-                    //     text: value.title,
-                    //     quick_replies: quickReplies,
-                    // }
-                    // messagesDatas.push(newMessage);
+                     let quickReplies = property.replies.map(reply => {
+                         return {
+                           "content_type": "text",
+                           "title": reply,
+                           "payload": reply
+                         };
+                       }); 
+                       let newMessage = {
+                         text: property.title,
+                         quick_replies: quickReplies,
+                     }
+                     messagesDatas.push(newMessage);
+                    }
+                     sendFBMessage(sender, messagesDatas, 0);
                 }
                 
                 else if (isDefined(messages) && messages.length > 1) {
