@@ -130,7 +130,7 @@ function processEvent(event) {
                    let property = config.property.filter(element => element.type == operation);
                    //console.log(property);
 
-                     let quickReplies = property.replies.map(reply => {
+                     let quickReplies = property[0].replies.map(reply => {
                          return {
                            "content_type": "text",
                            "title": reply,
@@ -138,7 +138,7 @@ function processEvent(event) {
                          };
                        }); 
                        let newMessage = {
-                         text: property.title,
+                         text: property[0].title,
                          quick_replies: quickReplies,
                      }
                      messagesDatas.push(newMessage);
