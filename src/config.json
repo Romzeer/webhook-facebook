@@ -7,9 +7,9 @@
             "title": "Here it is !",
             "replies": [
                 "addition",
-                "substraction",
-                "multiplication",
-                "division",
+                "Basic Equations",
+                "Prime and Composite",
+                "One-step equation",
                 "mixed operations"
             ]
         },
@@ -17,10 +17,9 @@
             "type": "subtraction",
             "title": "Just for you",
             "replies": [
-                "addition",
-                "substraction",
-                "multiplication",
-                "division",
+                "Basic Equations",
+                "Prime and Composite",
+                "One-step equation",
                 "mixed operations"
             ]
         },
@@ -28,33 +27,32 @@
             "type": "multiplication",
             "title": "Hope it may be helpful",
             "replies": [
-                "addition",
-                "substraction",
-                "multiplication",
-                "division",
-                "mixed operations"
+                "Multiplication",
+                "Basic Multiplication",
+                "Multiply Decimals",
+                "Multiply Ratios",
+                "Cross Multiplication"
             ]
         },  
         {
             "type": "division",
             "title": "Hope it may be helpful",
             "replies": [
-                "addition",
-                "substraction",
-                "multiplication",
-                "division",
-                "mixed operations"
+                "Division of fraction",
+                "Divide mixed numbers",
+                "Order of operation",
+                "Divide 2 fractions"
             ]
         },
         {
             "type": "mixed operations",
             "title": "Hope it may be helpful",
             "replies": [
-                "addition",
-                "substraction",
-                "multiplication",
-                "division",
-                "mixed operations"
+                "mixed operations",
+                "Order of operation",
+                "Mixed to improper",
+                "X mixed fractions",
+                "Divide Mixed Numbers"
             ]
         }
     ]
