@@ -123,7 +123,7 @@ function processEvent(event) {
                 if (action == "MentalCalcul.MentalCalcul-yes") {
                     let type = response.result.parameters.type;
                     //let test = config.property.addition;
-                    console.log(config);
+                    console.log(config.property.type);
 
                     // let quickReplies = config..map(reply => {
                     //     return {
