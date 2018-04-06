@@ -121,9 +121,10 @@ function processEvent(event) {
                     
                 }
                 if (action == "MentalCalcul.MentalCalcul-yes") {
-                    let type = response.result.parameters.type;
+                    let operation = response.result.parameters.type;
                     //let test = config.property.addition;
-                    console.log(config.property);
+                   let property = config.property.filter(element => element.type == operation);
+                   console.log(property);
 
                     // let quickReplies = config..map(reply => {
                     //     return {
